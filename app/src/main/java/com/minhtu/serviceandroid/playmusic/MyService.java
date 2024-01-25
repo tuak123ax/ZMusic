@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.media.session.MediaSessionCompat;
@@ -222,7 +223,10 @@ public class MyService extends Service {
         } else{
             style.setShowActionsInCompactView(0);
         }
-        notification.setStyle(style);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+        {
+            notification.setStyle(style);
+        }
         startForeground(1, notification.build());
     }
 
